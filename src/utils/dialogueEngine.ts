@@ -35,8 +35,8 @@ export const PRESET_TARGETS: VictimProfile[] = [
     cryptoBalance: 0,
     ttsVoice: 'Kore',
     speechStyle: 'Trembling sweet elderly grandmother, slow pace',
-    speechPitch: 1.3,
-    speechRate: 0.85,
+    speechPitch: 1.02,
+    speechRate: 0.94,
     secretNotes: 'Keeps cash under the mattress, thinks Google is a telephone operator.',
   },
   {
@@ -58,8 +58,8 @@ export const PRESET_TARGETS: VictimProfile[] = [
     cryptoBalance: 1.45,
     ttsVoice: 'Fenrir',
     speechStyle: 'Fast, aggressive, raspy young frat bro hitting a vape',
-    speechPitch: 0.9,
-    speechRate: 1.15,
+    speechPitch: 0.98,
+    speechRate: 1.05,
     secretNotes: 'Lost 80% on Dogecoin derivatives; panics at any mention of wallet freeze.',
   },
   {
@@ -83,7 +83,7 @@ export const PRESET_TARGETS: VictimProfile[] = [
     ttsVoice: 'Charon',
     speechStyle: 'Calm, cheerful, playful old British scambaiter',
     speechPitch: 1.0,
-    speechRate: 0.95,
+    speechRate: 0.96,
     secretNotes: 'DANGER: If Suspicion reaches 100%, he triggers reverse intrusion and formats player virtual drive!',
   },
   {
@@ -105,8 +105,8 @@ export const PRESET_TARGETS: VictimProfile[] = [
     cryptoBalance: 0.1,
     ttsVoice: 'Kore',
     speechStyle: 'Sharp, loud, indignant suburban mom demanding a manager',
-    speechPitch: 1.4,
-    speechRate: 1.1,
+    speechPitch: 1.04,
+    speechRate: 1.02,
     secretNotes: 'Terrified of IRS tax audits because of undeclared Etsy boutique sales.',
   },
   {
@@ -128,8 +128,8 @@ export const PRESET_TARGETS: VictimProfile[] = [
     cryptoBalance: 0,
     ttsVoice: 'Fenrir',
     speechStyle: 'Slow, gruff, friendly midwestern blue-collar worker',
-    speechPitch: 0.8,
-    speechRate: 0.9,
+    speechPitch: 0.96,
+    speechRate: 0.95,
     secretNotes: 'Grandson set up AnyDesk for him last Christmas to fix his Solitaire game.',
   },
   {
@@ -151,8 +151,8 @@ export const PRESET_TARGETS: VictimProfile[] = [
     cryptoBalance: 2.1,
     ttsVoice: 'Puck',
     speechStyle: 'Fast talking, caffeinated tech worker talking about sprint deliverables',
-    speechPitch: 1.1,
-    speechRate: 1.2,
+    speechPitch: 1.0,
+    speechRate: 1.08,
     secretNotes: 'Thinks the Zeus Trojan is an unassigned ticket in his DevOps backlog.',
   },
   {
@@ -174,8 +174,8 @@ export const PRESET_TARGETS: VictimProfile[] = [
     cryptoBalance: 0.5,
     ttsVoice: 'Charon',
     speechStyle: 'Paranoid, whispering, suspicious conspiracy theorist',
-    speechPitch: 0.85,
-    speechRate: 1.05,
+    speechPitch: 0.98,
+    speechRate: 1.02,
     secretNotes: 'Buried silver coins in his backyard; panics if you mention federal satellite scans.',
   },
   {
@@ -197,8 +197,8 @@ export const PRESET_TARGETS: VictimProfile[] = [
     cryptoBalance: 0,
     ttsVoice: 'Fenrir',
     speechStyle: 'Warm, booming, melodious southern church pastor',
-    speechPitch: 0.75,
-    speechRate: 0.85,
+    speechPitch: 0.95,
+    speechRate: 0.94,
     secretNotes: 'Controls the church fellowship fund; feels guilty about computer sins.',
   },
   {
@@ -220,8 +220,8 @@ export const PRESET_TARGETS: VictimProfile[] = [
     cryptoBalance: 0.2,
     ttsVoice: 'Puck',
     speechStyle: 'Slurring, hungover, confused college bro',
-    speechPitch: 1.0,
-    speechRate: 0.95,
+    speechPitch: 0.98,
+    speechRate: 1.04,
     secretNotes: 'Using his father Amex card; barely knows what day of the week it is.',
   },
   {
@@ -243,8 +243,8 @@ export const PRESET_TARGETS: VictimProfile[] = [
     cryptoBalance: 0,
     ttsVoice: 'Charon',
     speechStyle: 'Very elderly, quavering, shouting loudly into the telephone',
-    speechPitch: 1.1,
-    speechRate: 0.75,
+    speechPitch: 0.96,
+    speechRate: 0.92,
     secretNotes: 'Veteran pension fund accumulated over 50 years; lost his glasses in 2018.',
   },
 ];
@@ -689,7 +689,120 @@ export function generateRandomVictim(excludeId?: string): VictimProfile {
   };
 }
 
-// AI Voice Player (TTS via server or Web Speech API fallback)
+// Helper to get loaded voices safely (handles async voice loading in Chrome/Edge/Firefox)
+export function getAvailableVoices(): Promise<SpeechSynthesisVoice[]> {
+  if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+    return Promise.resolve([]);
+  }
+
+  const existing = window.speechSynthesis.getVoices();
+  if (existing && existing.length > 0) {
+    return Promise.resolve(existing);
+  }
+
+  return new Promise((resolve) => {
+    let resolved = false;
+    const onVoicesChanged = () => {
+      if (resolved) return;
+      const voices = window.speechSynthesis.getVoices();
+      if (voices && voices.length > 0) {
+        resolved = true;
+        window.speechSynthesis.removeEventListener('voiceschanged', onVoicesChanged);
+        resolve(voices);
+      }
+    };
+
+    window.speechSynthesis.addEventListener('voiceschanged', onVoicesChanged);
+    setTimeout(() => {
+      if (!resolved) {
+        resolved = true;
+        window.speechSynthesis.removeEventListener('voiceschanged', onVoicesChanged);
+        resolve(window.speechSynthesis.getVoices() || []);
+      }
+    }, 350);
+  });
+}
+
+// Select the most natural, human-sounding voice available
+export function pickNaturalVoice(
+  victim: VictimProfile,
+  voices: SpeechSynthesisVoice[]
+): SpeechSynthesisVoice | null {
+  if (!voices || voices.length === 0) return null;
+
+  const enVoices = voices.filter((v) => v.lang.toLowerCase().startsWith('en'));
+  const candidatePool = enVoices.length > 0 ? enVoices : voices;
+
+  const isFemale =
+    victim.archetype === 'Grandma' ||
+    victim.archetype === 'Karen';
+
+  // Scoring function that heavily favors Natural / Online / Neural / Enhanced voices
+  const scoreVoice = (voice: SpeechSynthesisVoice) => {
+    const name = voice.name.toLowerCase();
+    const lang = voice.lang.toLowerCase();
+
+    // Ancient robotic Windows voices to avoid
+    const isRobotic =
+      name.includes('desktop') ||
+      name.includes('zira') ||
+      name.includes('david') ||
+      name.includes('hazel') ||
+      name.includes('mark');
+
+    let score = 0;
+    if (name.includes('natural')) score += 120;
+    if (name.includes('online')) score += 100;
+    if (name.includes('neural')) score += 90;
+    if (name.includes('enhanced')) score += 80;
+    if (name.includes('google')) score += 70;
+    if (name.includes('premium')) score += 60;
+    if (name.includes('siri')) score += 50;
+
+    if (isRobotic) score -= 100;
+
+    // Archetype-specific targeting
+    if (victim.archetype === 'Scambaiter') {
+      // British gentleman
+      if (lang.includes('gb') || name.includes('uk') || name.includes('british') || name.includes('ryan') || name.includes('oliver') || name.includes('daniel')) {
+        score += 80;
+      }
+    } else if (isFemale) {
+      if (
+        name.includes('female') ||
+        name.includes('jenny') ||
+        name.includes('aria') ||
+        name.includes('michelle') ||
+        name.includes('samantha') ||
+        name.includes('karen') ||
+        name.includes('sonia') ||
+        name.includes('victoria') ||
+        name.includes('ava')
+      ) {
+        score += 50;
+      }
+    } else {
+      if (
+        name.includes('male') ||
+        name.includes('guy') ||
+        name.includes('christopher') ||
+        name.includes('eric') ||
+        name.includes('daniel') ||
+        name.includes('alex') ||
+        name.includes('fred')
+      ) {
+        score += 50;
+      }
+    }
+
+    return score;
+  };
+
+  const sorted = [...candidatePool].sort((a, b) => scoreVoice(b) - scoreVoice(a));
+  return sorted[0] || candidatePool[0];
+}
+
+// AI Voice Player (TTS via server or Enhanced Web Speech API fallback)
 export async function speakVictimResponse(
   text: string,
   victim: VictimProfile,
@@ -700,13 +813,24 @@ export async function speakVictimResponse(
 
   onStart?.();
 
-  // Try Server Gemini TTS first
+  // Strip stage directions like *SLAM* or [AUDIO] so synthesis speaks natural words
+  const cleanSpokenText = text
+    .replace(/\*([^*]+)\*/g, '')
+    .replace(/\[([^\]]+)\]/g, '')
+    .trim();
+
+  if (!cleanSpokenText) {
+    onEnd?.();
+    return;
+  }
+
+  // 1. Try Server Gemini TTS first (if deployed with serverless /api/tts)
   try {
     const res = await fetch('/api/tts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        text,
+        text: cleanSpokenText,
         voiceName: victim.ttsVoice || 'Kore',
         style: victim.speechStyle || 'Conversational phone caller',
       }),
@@ -715,8 +839,9 @@ export async function speakVictimResponse(
     if (res.ok) {
       const data = await res.json();
       if (data.audio) {
-        // Decode and play base64 PCM / audio
-        const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+        const AudioContextClass =
+          window.AudioContext ||
+          (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
         const ctx = new AudioContextClass();
         const binary = atob(data.audio);
         const bytes = new Uint8Array(binary.length);
@@ -735,40 +860,49 @@ export async function speakVictimResponse(
           source.start();
           return;
         } catch {
-          // If raw PCM or decode fails, proceed to browser TTS
+          // If decode fails, proceed to natural browser TTS
         }
       }
     }
   } catch {
-    // Proceed to browser TTS fallback
+    // Proceed to enhanced natural browser TTS fallback
   }
 
-  // Browser Web Speech API fallback
+  // 2. Enhanced Natural Browser Web Speech API
   if ('speechSynthesis' in window) {
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.pitch = victim.speechPitch ?? 1.0;
-    utterance.rate = victim.speechRate ?? 1.0;
+    try {
+      window.speechSynthesis.cancel();
 
-    const voices = window.speechSynthesis.getVoices();
-    if (voices.length > 0) {
-      if (victim.archetype === 'Grandma' || victim.archetype === 'Karen') {
-        const femaleVoice = voices.find((v) => v.name.includes('Female') || v.name.includes('Zira') || v.name.includes('Google US English'));
-        if (femaleVoice) utterance.voice = femaleVoice;
-      } else {
-        const maleVoice = voices.find((v) => v.name.includes('Male') || v.name.includes('David') || v.name.includes('Daniel'));
-        if (maleVoice) utterance.voice = maleVoice;
+      const voices = await getAvailableVoices();
+      const chosenVoice = pickNaturalVoice(victim, voices);
+
+      const utterance = new SpeechSynthesisUtterance(cleanSpokenText);
+
+      // Keep pitch in subtle, natural conversational human range (0.94 - 1.05)
+      const clampedPitch = Math.max(0.93, Math.min(1.05, victim.speechPitch ?? 1.0));
+      const clampedRate = Math.max(0.90, Math.min(1.08, victim.speechRate ?? 1.0));
+
+      utterance.pitch = clampedPitch;
+      utterance.rate = clampedRate;
+
+      if (chosenVoice) {
+        utterance.voice = chosenVoice;
+        utterance.lang = chosenVoice.lang;
       }
+
+      utterance.onend = () => {
+        onEnd?.();
+      };
+      utterance.onerror = (e) => {
+        console.warn('SpeechSynthesis error:', e);
+        onEnd?.();
+      };
+
+      window.speechSynthesis.speak(utterance);
+    } catch (err) {
+      console.warn('Speech synthesis failed:', err);
+      onEnd?.();
     }
-
-    utterance.onend = () => {
-      onEnd?.();
-    };
-    utterance.onerror = () => {
-      onEnd?.();
-    };
-
-    window.speechSynthesis.speak(utterance);
   } else {
     onEnd?.();
   }

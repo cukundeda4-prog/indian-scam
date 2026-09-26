@@ -17,36 +17,9 @@ import {
   Link2,
 } from 'lucide-react';
 import { playBeep, playKeyboardClick } from '../utils/audio';
+import { useMicrophone } from '../hooks/useMicrophone';
 
-// SpeechRecognition global types
-interface SpeechRecognitionErrorEvent extends Event {
-  error: string;
-}
 
-interface SpeechRecognitionEvent extends Event {
-  results: SpeechRecognitionResultList;
-}
-
-interface IWindow extends Window {
-  SpeechRecognition?: {
-    new (): SpeechRecognitionInstance;
-  };
-  webkitSpeechRecognition?: {
-    new (): SpeechRecognitionInstance;
-  };
-}
-
-interface SpeechRecognitionInstance extends EventTarget {
-  continuous: boolean;
-  interimResults: boolean;
-  lang: string;
-  start: () => void;
-  stop: () => void;
-  abort: () => void;
-  onresult: ((event: SpeechRecognitionEvent) => void) | null;
-  onerror: ((event: SpeechRecognitionErrorEvent) => void) | null;
-  onend: (() => void) | null;
-}
 
 interface PhoneDialerProps {
   currentCall: ActiveCall | null;
@@ -77,111 +50,58 @@ export const PhoneDialer: React.FC<PhoneDialerProps> = ({
 }) => {
   const [inputText, setInputText] = useState('');
   const [showHelp, setShowHelp] = useState(false);
-  const [isMicListening, setIsMicListening] = useState(false);
-  const [micSupported, setMicSupported] = useState(true);
-  const [speechInterim, setSpeechInterim] = useState('');
   const transcriptEndRef = useRef<HTMLDivElement>(null);
-  const recognitionRef = useRef<SpeechRecognitionInstance | null>(null);
+
+  const {
+    permissionState,
+    isMicActive,
+    isMuted: isMicMuted,
+    audioLevel,
+    interimText,
+    finalText,
+    errorMessage: micError,
+    isRecognitionSupported,
+    requestPermission,
+    toggleMute,
+    stopMic,
+    clearTranscript,
+  } = useMicrophone({
+    onTranscriptFinal: (speechText) => {
+      if (speechText && currentCall && currentCall.status === 'connected' && !isProcessing) {
+        playKeyboardClick();
+        onSendMessage(speechText);
+      }
+    },
+    autoSendDelayMs: 1400,
+  });
+
+  // Sync spoken words to input field
+  useEffect(() => {
+    if (finalText) {
+      setInputText(finalText);
+    }
+  }, [finalText]);
 
   // Auto-scroll chat transcript to bottom
   useEffect(() => {
     transcriptEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [currentCall?.history]);
 
-  // Setup SpeechRecognition for microphone input
-  useEffect(() => {
-    const win = window as unknown as IWindow;
-    const SpeechRecognitionClass = win.SpeechRecognition || win.webkitSpeechRecognition;
-
-    if (!SpeechRecognitionClass) {
-      setMicSupported(false);
-      return;
-    }
-
-    try {
-      const recognition = new SpeechRecognitionClass();
-      recognition.continuous = true;
-      recognition.interimResults = true;
-      recognition.lang = 'en-US';
-
-      recognition.onresult = (event: SpeechRecognitionEvent) => {
-        let interim = '';
-        let final = '';
-
-        for (let i = 0; i < event.results.length; i++) {
-          const result = event.results[i];
-          if (result.isFinal) {
-            final += result[0].transcript;
-          } else {
-            interim += result[0].transcript;
-          }
-        }
-
-        if (final) {
-          setInputText((prev) => (prev ? `${prev} ${final.trim()}` : final.trim()));
-          setSpeechInterim('');
-        } else {
-          setSpeechInterim(interim);
-        }
-      };
-
-      recognition.onerror = (e: SpeechRecognitionErrorEvent) => {
-        console.warn('Speech recognition error:', e.error);
-        if (e.error !== 'no-speech') {
-          setIsMicListening(false);
-        }
-      };
-
-      recognition.onend = () => {
-        if (isMicListening) {
-          // Restart if user still wants mic on
-          try {
-            recognition.start();
-          } catch {
-            setIsMicListening(false);
-          }
-        }
-      };
-
-      recognitionRef.current = recognition;
-    } catch (err) {
-      console.warn('Speech recognition init failed:', err);
-      setMicSupported(false);
-    }
-
-    return () => {
-      if (recognitionRef.current) {
-        try {
-          recognitionRef.current.abort();
-        } catch {
-          // Ignore
-        }
-      }
-    };
-  }, [isMicListening]);
-
-  // Toggle Microphone
-  const toggleMic = () => {
-    if (!micSupported) return;
-
-    if (isMicListening) {
-      setIsMicListening(false);
-      try {
-        recognitionRef.current?.stop();
-      } catch {
-        // Ignore
-      }
-      playBeep(350, 0.1);
+  const handleToggleMicOrPermission = async () => {
+    if (!isMicActive) {
+      playBeep(700, 0.1);
+      await requestPermission();
     } else {
-      setIsMicListening(true);
-      try {
-        recognitionRef.current?.start();
-        playBeep(700, 0.1);
-      } catch {
-        // In case already started
-      }
+      playBeep(isMicMuted ? 800 : 350, 0.1);
+      toggleMute();
     }
   };
+
+
+
+
+
+
 
   const scamOptions: { id: ScamType; label: string; desc: string }[] = [
     {
@@ -213,7 +133,7 @@ export const PhoneDialer: React.FC<PhoneDialerProps> = ({
 
     const text = inputText.trim();
     setInputText('');
-    setSpeechInterim('');
+    clearTranscript();
 
     if (text.startsWith('/')) {
       onCommand(text);
@@ -472,6 +392,100 @@ export const PhoneDialer: React.FC<PhoneDialerProps> = ({
             )}
           </div>
 
+          {/* Interactive Microphone & VOIP Line Controls */}
+          {currentCall && (
+            <div className="border-b border-zinc-800">
+              {permissionState === 'denied' ? (
+                <div className="bg-red-950/60 p-2.5 flex items-center gap-2 text-xs text-red-300">
+                  <MicOff className="w-4 h-4 text-red-400 shrink-0" />
+                  <span>
+                    <strong>MIC PERMISSION DENIED:</strong> Browser blocked microphone access. Click the camera/lock icon in your browser URL bar to allow microphone.
+                  </span>
+                </div>
+              ) : !isMicActive ? (
+                <div className="bg-amber-950/40 p-2.5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-amber-200">
+                  <div className="flex items-center gap-2">
+                    <Mic className="w-4 h-4 text-amber-400 animate-pulse" />
+                    <span>
+                      <strong>LIVE VOIP MICROPHONE:</strong> Speak directly to {currentCall.victim.name} using your voice!
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleToggleMicOrPermission}
+                    className="px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-black font-extrabold rounded text-xs flex items-center gap-1.5 transition-all shadow-md shadow-amber-950"
+                  >
+                    <Mic className="w-3.5 h-3.5 fill-black" />
+                    <span>GRANT MIC PERMISSION</span>
+                  </button>
+                </div>
+              ) : (
+                <div className="bg-zinc-950 p-2 flex flex-wrap items-center justify-between gap-2 text-xs">
+                  {/* Status & Real VU Volume Meter */}
+                  <div className="flex items-center gap-2.5">
+                    <span
+                      className={`w-2.5 h-2.5 rounded-full ${
+                        isMicMuted ? 'bg-red-500' : 'bg-emerald-400 animate-pulse'
+                      }`}
+                    />
+                    <span className="font-bold text-[11px] text-zinc-300">
+                      {isMicMuted ? 'YOUR MIC: MUTED (OFF-LINE)' : 'YOUR MIC: LIVE ON LINE'}
+                    </span>
+
+                    {/* Animated VU Meter Bars based on real input volume */}
+                    {!isMicMuted && (
+                      <div className="flex items-center gap-0.5 h-3.5 px-1.5 py-0.5 bg-black rounded border border-zinc-800">
+                        {[...Array(8)].map((_, i) => (
+                          <div
+                            key={i}
+                            className={`w-1 h-full rounded-sm transition-all duration-75 ${
+                              audioLevel > (i + 1) * 11
+                                ? i >= 6
+                                  ? 'bg-red-500'
+                                  : i >= 3
+                                  ? 'bg-amber-400'
+                                  : 'bg-emerald-400'
+                                : 'bg-zinc-800'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    )}
+
+                    {interimText && (
+                      <span className="text-[11px] text-emerald-400 italic truncate max-w-xs">
+                        "{interimText}"
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Quick Mute / Unmute Button */}
+                  <button
+                    type="button"
+                    onClick={handleToggleMicOrPermission}
+                    className={`px-3 py-1 rounded text-xs font-extrabold flex items-center gap-1.5 transition-all ${
+                      isMicMuted
+                        ? 'bg-red-600 hover:bg-red-500 text-white shadow-sm'
+                        : 'bg-zinc-800 hover:bg-zinc-700 text-emerald-300 border border-emerald-500/50'
+                    }`}
+                  >
+                    {isMicMuted ? (
+                      <>
+                        <MicOff className="w-3.5 h-3.5 text-white" />
+                        <span>UNMUTE MIC</span>
+                      </>
+                    ) : (
+                      <>
+                        <Mic className="w-3.5 h-3.5 text-emerald-400" />
+                        <span>MUTE MYSELF</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+
           {/* Chat Transcript Area */}
           <div className="flex-1 p-3 overflow-y-auto space-y-3 font-mono text-xs">
             {!currentCall ? (
@@ -613,33 +627,39 @@ export const PhoneDialer: React.FC<PhoneDialerProps> = ({
 
           {/* Interactive Microphone & Dialogue Input Bar */}
           <form onSubmit={handleSend} className="p-2.5 bg-zinc-900 border-t border-zinc-800 flex gap-2">
-            {/* Microphone Button */}
+            {/* Microphone Button with Mute / Unmute / Permission */}
             <button
               type="button"
-              onClick={toggleMic}
-              disabled={!micSupported}
+              onClick={handleToggleMicOrPermission}
               title={
-                !micSupported
-                  ? 'Microphone speech recognition not supported in this browser'
-                  : isMicListening
-                  ? 'Click to turn off microphone'
-                  : 'Click to speak with your microphone'
+                !isMicActive
+                  ? 'Click to grant browser microphone permission'
+                  : isMicMuted
+                  ? 'Click to unmute microphone'
+                  : 'Click to mute yourself'
               }
-              className={`px-3 py-2 rounded text-xs font-bold flex items-center gap-1.5 transition-all ${
-                isMicListening
-                  ? 'bg-red-600 text-white animate-pulse shadow-lg shadow-red-900'
-                  : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700'
+              className={`px-3 py-2 rounded text-xs font-extrabold flex items-center gap-1.5 transition-all ${
+                !isMicActive
+                  ? 'bg-amber-500 hover:bg-amber-400 text-black shadow-md shadow-amber-950 animate-pulse'
+                  : isMicMuted
+                  ? 'bg-red-600 hover:bg-red-500 text-white shadow-sm'
+                  : 'bg-emerald-600 hover:bg-emerald-500 text-black shadow-md shadow-emerald-950 animate-pulse'
               }`}
             >
-              {isMicListening ? (
+              {!isMicActive ? (
                 <>
-                  <Mic className="w-4 h-4 text-white" />
-                  <span className="hidden sm:inline">MIC ON</span>
+                  <Mic className="w-4 h-4 fill-black text-black" />
+                  <span className="hidden sm:inline">ALLOW MIC</span>
+                </>
+              ) : isMicMuted ? (
+                <>
+                  <MicOff className="w-4 h-4 text-white" />
+                  <span className="hidden sm:inline">MUTED</span>
                 </>
               ) : (
                 <>
-                  <MicOff className="w-4 h-4 text-zinc-400" />
-                  <span className="hidden sm:inline">MIC</span>
+                  <Mic className="w-4 h-4 text-black fill-black" />
+                  <span className="hidden sm:inline">MIC LIVE</span>
                 </>
               )}
             </button>
@@ -651,16 +671,18 @@ export const PhoneDialer: React.FC<PhoneDialerProps> = ({
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 placeholder={
-                  isMicListening
-                    ? speechInterim
-                      ? `Listening: "${speechInterim}"...`
+                  isMicActive && !isMicMuted
+                    ? interimText
+                      ? `Listening: "${interimText}"...`
                       : 'Speak into your microphone now...'
                     : currentCall
-                    ? 'Speak via mic, or type dialogue (/connect, /hangup)...'
+                    ? 'Type dialogue or command (/send_link, /connect, /hangup)...'
                     : 'Type /dial to autodial a random caller...'
                 }
                 className={`w-full bg-black border rounded px-3 py-2 text-xs text-zinc-100 placeholder-zinc-500 focus:outline-none font-mono transition-colors ${
-                  isMicListening ? 'border-red-500 shadow-sm shadow-red-950' : 'border-zinc-700 focus:border-emerald-500'
+                  isMicActive && !isMicMuted
+                    ? 'border-emerald-500 shadow-sm shadow-emerald-950'
+                    : 'border-zinc-700 focus:border-emerald-500'
                 }`}
               />
             </div>
