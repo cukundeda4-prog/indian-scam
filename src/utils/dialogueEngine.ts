@@ -98,10 +98,10 @@ export const PRESET_TARGETS: VictimProfile[] = [
     baseSuspicion: 50,
     bankBalance: 28900,
     targetScamPreference: 'IRS_GOVERNMENT',
-    hiddenCardNumber: '3782 8224 9012 3341',
-    hiddenCvv: '882',
-    hiddenExpiry: '09/26',
-    hiddenGiftCard: 'WALMART-5582-1923-4412',
+    hiddenCardNumber: '3782 8221 0019 4432',
+    hiddenCvv: '902',
+    hiddenExpiry: '09/28',
+    hiddenGiftCard: 'WALMART-KRN8-2201-9988',
     cryptoBalance: 0.1,
     ttsVoice: 'Kore',
     speechStyle: 'Sharp, loud, indignant suburban mom demanding a manager',
@@ -111,20 +111,20 @@ export const PRESET_TARGETS: VictimProfile[] = [
   },
   {
     id: 'uncle_bob',
-    name: 'Uncle Bob Higgins',
-    age: 64,
-    archetype: 'Uncle',
-    location: 'Toledo, Ohio',
-    personality: 'Rambles about lawnmowers, speaks with a heavy midwest drawl, has stack of unredeemed Home Depot & Steam cards in garage.',
+    name: 'Uncle Bob Jenkins',
+    age: 61,
+    archetype: 'Grandpa',
+    location: 'Des Moines, Iowa',
+    personality: 'Friendly, slow-talking handyman. Uses his computer once a month to check the tractor auction listings.',
     avatarSeed: 'bob',
-    baseTrust: 35,
-    baseSuspicion: 20,
-    bankBalance: 19500,
-    targetScamPreference: 'REFUND_DEPT',
-    hiddenCardNumber: '4000 1234 5678 9010',
-    hiddenCvv: '412',
-    hiddenExpiry: '10/28',
-    hiddenGiftCard: 'STEAM-BOB8-9921-ZZ71',
+    baseTrust: 50,
+    baseSuspicion: 15,
+    bankBalance: 19800,
+    targetScamPreference: 'TECH_SUPPORT',
+    hiddenCardNumber: '4912 3381 2291 0044',
+    hiddenCvv: '441',
+    hiddenExpiry: '06/27',
+    hiddenGiftCard: 'TARGET-BB91-8821-3312',
     cryptoBalance: 0,
     ttsVoice: 'Fenrir',
     speechStyle: 'Slow, gruff, friendly midwestern blue-collar worker',
@@ -133,21 +133,21 @@ export const PRESET_TARGETS: VictimProfile[] = [
     secretNotes: 'Grandson set up AnyDesk for him last Christmas to fix his Solitaire game.',
   },
   {
-    id: 'sanjay_techbro',
-    name: 'Sanjay "Agile Scrum" Patel',
-    age: 29,
+    id: 'techbro_sanjay',
+    name: 'Sanjay "Startup Founder" Patel',
+    age: 31,
     archetype: 'TechBro',
     location: 'San Francisco, California',
-    personality: 'Silicon Valley Product Manager who talks in corporate buzzwords: sprint retros, bandwidth, Jira tickets, and deliverables.',
+    personality: 'Talks a mile a minute, uses corporate buzzwords, thinks he is too smart to get scammed, terrified of identity theft.',
     avatarSeed: 'sanjay',
-    baseTrust: 25,
-    baseSuspicion: 30,
-    bankBalance: 98000,
-    targetScamPreference: 'TECH_SUPPORT',
-    hiddenCardNumber: '4532 9912 3341 8802',
-    hiddenCvv: '511',
-    hiddenExpiry: '12/28',
-    hiddenGiftCard: 'APPLE-SJ92-8812-ZZ31',
+    baseTrust: 30,
+    baseSuspicion: 40,
+    bankBalance: 88500,
+    targetScamPreference: 'CRYPTO_SECURITY',
+    hiddenCardNumber: '4001 7729 1184 9920',
+    hiddenCvv: '831',
+    hiddenExpiry: '12/30',
+    hiddenGiftCard: 'APPLE-SNJY-4411-9901',
     cryptoBalance: 2.1,
     ttsVoice: 'Puck',
     speechStyle: 'Fast talking, caffeinated tech worker talking about sprint deliverables',
@@ -157,20 +157,20 @@ export const PRESET_TARGETS: VictimProfile[] = [
   },
   {
     id: 'conspiracy_dan',
-    name: 'Dan "FlatEarth" Kowalski',
-    age: 55,
+    name: 'Dan "The Truth" Kowalski',
+    age: 53,
     archetype: 'Conspiracy',
     location: 'Roswell, New Mexico',
-    personality: 'Believes 5G towers, fluoride, and the Deep State IRS are listening through his router. Tin foil hat on at all times.',
+    personality: 'Extremely paranoid, wraps his router in tinfoil, suspects the deep state is hacking his webcam.',
     avatarSeed: 'dan',
-    baseTrust: 18,
+    baseTrust: 10,
     baseSuspicion: 60,
-    bankBalance: 31000,
+    bankBalance: 31200,
     targetScamPreference: 'IRS_GOVERNMENT',
-    hiddenCardNumber: '6011 2291 4410 8821',
-    hiddenCvv: '992',
-    hiddenExpiry: '03/27',
-    hiddenGiftCard: 'TARGET-5GFL-9912-QW44',
+    hiddenCardNumber: '5105 1092 3341 8829',
+    hiddenCvv: '552',
+    hiddenExpiry: '03/28',
+    hiddenGiftCard: 'WALMART-TRUTH-9912-33',
     cryptoBalance: 0.5,
     ttsVoice: 'Charon',
     speechStyle: 'Paranoid, whispering, suspicious conspiracy theorist',
@@ -180,20 +180,20 @@ export const PRESET_TARGETS: VictimProfile[] = [
   },
   {
     id: 'pastor_ezekiel',
-    name: 'Pastor Ezekiel Jones',
-    age: 71,
+    name: 'Pastor Ezekiel Green',
+    age: 58,
     archetype: 'Pastor',
-    location: 'Nashville, Tennessee',
-    personality: 'Deeply religious southern preacher. Tries to pray away the Zeus trojan and bless the scammer with church tithing donations.',
+    location: 'Macon, Georgia',
+    personality: 'Gullible, forgives everyone, quotes scripture, terrified that someone will find adult popups on the church laptop.',
     avatarSeed: 'ezekiel',
     baseTrust: 55,
     baseSuspicion: 10,
-    bankBalance: 65400,
+    bankBalance: 64000,
     targetScamPreference: 'REFUND_DEPT',
-    hiddenCardNumber: '4221 8812 3390 1142',
-    hiddenCvv: '777',
-    hiddenExpiry: '07/28',
-    hiddenGiftCard: 'WALMART-PRAY-8821-HL77',
+    hiddenCardNumber: '4226 7712 9001 4452',
+    hiddenCvv: '192',
+    hiddenExpiry: '05/29',
+    hiddenGiftCard: 'TARGET-CHURCH-8812-44',
     cryptoBalance: 0,
     ttsVoice: 'Fenrir',
     speechStyle: 'Warm, booming, melodious southern church pastor',
@@ -207,16 +207,16 @@ export const PRESET_TARGETS: VictimProfile[] = [
     age: 21,
     archetype: 'FratBoy',
     location: 'Gainesville, Florida',
-    personality: 'Hungover college student. Loud house music in background, thinks scammer is DoorDash or his mom calling about rent.',
+    personality: 'Hungover college bro, confused, thought he was answering a door dash call, easily frightened by talk of expulsion.',
     avatarSeed: 'tyler',
-    baseTrust: 30,
-    baseSuspicion: 15,
-    bankBalance: 4200,
-    targetScamPreference: 'CRYPTO_SECURITY',
-    hiddenCardNumber: '4912 3301 8821 7741',
-    hiddenCvv: '420',
-    hiddenExpiry: '05/29',
-    hiddenGiftCard: 'STEAM-FRAT-4421-BRO9',
+    baseTrust: 35,
+    baseSuspicion: 20,
+    bankBalance: 4800,
+    targetScamPreference: 'REFUND_DEPT',
+    hiddenCardNumber: '4532 9918 2210 3341',
+    hiddenCvv: '284',
+    hiddenExpiry: '10/26',
+    hiddenGiftCard: 'STEAM-TYLER-8812-9901',
     cryptoBalance: 0.2,
     ttsVoice: 'Puck',
     speechStyle: 'Slurring, hungover, confused college bro',
@@ -226,17 +226,17 @@ export const PRESET_TARGETS: VictimProfile[] = [
   },
   {
     id: 'grandpa_harold',
-    name: 'Grandpa Harold Vance',
-    age: 89,
+    name: 'Harold "Hard-of-Hearing" Vance',
+    age: 87,
     archetype: 'Grandpa',
-    location: 'Bangor, Maine',
-    personality: 'Extremely hard of hearing, constantly drops phone, asks if the caller is Sears Roebuck or the microwave repairman.',
+    location: 'Omaha, Nebraska',
+    personality: 'Practically deaf, yells everything into the phone receiver, thinks you are calling from the Sears department store.',
     avatarSeed: 'harold',
-    baseTrust: 50,
-    baseSuspicion: 5,
-    bankBalance: 84000,
+    baseTrust: 40,
+    baseSuspicion: 15,
+    bankBalance: 78900,
     targetScamPreference: 'TECH_SUPPORT',
-    hiddenCardNumber: '4128 8891 0021 5562',
+    hiddenCardNumber: '4112 0019 8832 1190',
     hiddenCvv: '109',
     hiddenExpiry: '01/26',
     hiddenGiftCard: 'TARGET-HRO8-9921-7712',
@@ -249,11 +249,252 @@ export const PRESET_TARGETS: VictimProfile[] = [
   },
 ];
 
+// Cache of available browser synthesis voices
+let cachedVoices: SpeechSynthesisVoice[] = [];
+
+// Preload voices immediately on load
+export function initVoicePreloader() {
+  if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+
+  const load = () => {
+    const v = window.speechSynthesis.getVoices();
+    if (v && v.length > 0) {
+      cachedVoices = v;
+    }
+  };
+
+  load();
+  if (window.speechSynthesis.onvoiceschanged !== undefined) {
+    window.speechSynthesis.onvoiceschanged = load;
+  }
+}
+
+// Automatically invoke preloader
+initVoicePreloader();
+
+export function getAvailableVoices(): Promise<SpeechSynthesisVoice[]> {
+  if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+    return Promise.resolve([]);
+  }
+
+  if (cachedVoices.length > 0) {
+    return Promise.resolve(cachedVoices);
+  }
+
+  const existing = window.speechSynthesis.getVoices();
+  if (existing && existing.length > 0) {
+    cachedVoices = existing;
+    return Promise.resolve(existing);
+  }
+
+  return new Promise((resolve) => {
+    let resolved = false;
+    const onVoicesChanged = () => {
+      if (resolved) return;
+      const voices = window.speechSynthesis.getVoices();
+      if (voices && voices.length > 0) {
+        resolved = true;
+        cachedVoices = voices;
+        window.speechSynthesis.removeEventListener('voiceschanged', onVoicesChanged);
+        resolve(voices);
+      }
+    };
+
+    window.speechSynthesis.addEventListener('voiceschanged', onVoicesChanged);
+    setTimeout(() => {
+      if (!resolved) {
+        resolved = true;
+        const current = window.speechSynthesis.getVoices() || [];
+        cachedVoices = current;
+        resolve(current);
+      }
+    }, 500);
+  });
+}
+
+// Select natural human voices (prioritizing Google Natural, Edge Neural, Apple Enhanced)
+export function pickNaturalVoice(
+  victim: VictimProfile,
+  voices: SpeechSynthesisVoice[]
+): SpeechSynthesisVoice | null {
+  if (!voices || voices.length === 0) return null;
+
+  const enVoices = voices.filter((v) => v.lang.toLowerCase().startsWith('en'));
+  const candidatePool = enVoices.length > 0 ? enVoices : voices;
+
+  const isFemale = victim.archetype === 'Grandma' || victim.archetype === 'Karen';
+
+  const scoreVoice = (voice: SpeechSynthesisVoice) => {
+    const name = voice.name.toLowerCase();
+    const lang = voice.lang.toLowerCase();
+
+    let score = 0;
+
+    // High quality modern web voices
+    if (name.includes('natural')) score += 150;
+    if (name.includes('neural')) score += 140;
+    if (name.includes('google')) score += 130;
+    if (name.includes('online')) score += 120;
+    if (name.includes('enhanced') || name.includes('premium')) score += 100;
+    if (name.includes('siri')) score += 80;
+
+    // Heavily penalize old robotic desktop synthesizers
+    if (
+      name.includes('desktop') ||
+      name.includes('david') ||
+      name.includes('zira') ||
+      name.includes('hazel') ||
+      name.includes('mark')
+    ) {
+      score -= 80;
+    }
+
+    // Archetype targeting
+    if (victim.archetype === 'Scambaiter') {
+      if (lang.includes('gb') || name.includes('uk') || name.includes('british') || name.includes('ryan') || name.includes('oliver') || name.includes('george')) {
+        score += 90;
+      }
+    } else if (isFemale) {
+      if (
+        name.includes('female') ||
+        name.includes('jenny') ||
+        name.includes('aria') ||
+        name.includes('samantha') ||
+        name.includes('victoria') ||
+        name.includes('karen') ||
+        name.includes('michelle')
+      ) {
+        score += 60;
+      }
+    } else {
+      if (
+        name.includes('male') ||
+        name.includes('guy') ||
+        name.includes('christopher') ||
+        name.includes('eric') ||
+        name.includes('daniel') ||
+        name.includes('alex')
+      ) {
+        score += 60;
+      }
+    }
+
+    return score;
+  };
+
+  const sorted = [...candidatePool].sort((a, b) => scoreVoice(b) - scoreVoice(a));
+  return sorted[0] || candidatePool[0];
+}
+
+// Speak victim response using highest quality voice available
+export async function speakVictimResponse(
+  text: string,
+  victim: VictimProfile,
+  onStart?: () => void,
+  onEnd?: () => void
+): Promise<void> {
+  if (!text) {
+    onEnd?.();
+    return;
+  }
+
+  onStart?.();
+
+  // Strip stage directions like *SLAM*, *CLICK*, [VOIP]
+  const cleanSpokenText = text
+    .replace(/\*([^*]+)\*/g, '')
+    .replace(/\[([^\]]+)\]/g, '')
+    .replace(/[^\w\s.,!?'"$-]/gi, '')
+    .trim();
+
+  if (!cleanSpokenText) {
+    onEnd?.();
+    return;
+  }
+
+  // 1. Try serverless /api/tts endpoint first if server is reachable
+  try {
+    const res = await fetch('/api/tts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        text: cleanSpokenText,
+        voiceName: victim.ttsVoice || 'Kore',
+        style: victim.speechStyle || 'Conversational phone caller',
+      }),
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      if (data.audio) {
+        const AudioContextClass =
+          window.AudioContext ||
+          (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+        const ctx = new AudioContextClass();
+        const binary = atob(data.audio);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i++) {
+          bytes[i] = binary.charCodeAt(i);
+        }
+        const buffer = await ctx.decodeAudioData(bytes.buffer);
+        const source = ctx.createBufferSource();
+        source.buffer = buffer;
+        source.connect(ctx.destination);
+        source.onended = () => {
+          onEnd?.();
+        };
+        source.start();
+        return;
+      }
+    }
+  } catch {
+    // Proceed to enhanced client-side voice synthesis
+  }
+
+  // 2. High-quality Web Speech API with Natural Voice Selection
+  if ('speechSynthesis' in window) {
+    try {
+      window.speechSynthesis.cancel();
+
+      const voices = await getAvailableVoices();
+      const chosenVoice = pickNaturalVoice(victim, voices);
+
+      const utterance = new SpeechSynthesisUtterance(cleanSpokenText);
+
+      // Conversational natural human bounds: strictly close to 1.0
+      const naturalPitch = Math.max(0.96, Math.min(1.02, victim.speechPitch ?? 1.0));
+      const naturalRate = Math.max(0.94, Math.min(1.04, victim.speechRate ?? 1.0));
+
+      utterance.pitch = naturalPitch;
+      utterance.rate = naturalRate;
+
+      if (chosenVoice) {
+        utterance.voice = chosenVoice;
+        utterance.lang = chosenVoice.lang;
+      }
+
+      utterance.onend = () => {
+        onEnd?.();
+      };
+      utterance.onerror = () => {
+        onEnd?.();
+      };
+
+      window.speechSynthesis.speak(utterance);
+    } catch {
+      onEnd?.();
+    }
+  } else {
+    onEnd?.();
+  }
+}
+
+// Main Dialogue Processor
 export async function processDialogue(
   call: ActiveCall,
   playerMessage: string
 ): Promise<DialogueResult> {
-  // 1. Try backend server API powered by Gemini
+  // 1. Try serverless backend API (if available)
   try {
     const res = await fetch('/api/dialogue', {
       method: 'POST',
@@ -290,28 +531,30 @@ export async function processDialogue(
       }
     }
   } catch {
-    // Fallback smoothly to procedural simulation
+    // Proceed to robust procedural engine
   }
 
-  // 2. High-Fidelity Procedural Simulation Engine
+  // 2. Multi-turn Dynamic Procedural Brain
   return generateProceduralResponse(call, playerMessage);
 }
 
+// Dynamic Multi-turn Procedural Conversation Engine (Never repeats lines, adapts to player intent)
 function generateProceduralResponse(
   call: ActiveCall,
   playerMessage: string
 ): DialogueResult {
-  const text = playerMessage.toLowerCase();
-  const { victim, trust, suspicion } = call;
-  const isJim = victim.archetype === 'Scambaiter';
-  const isEthel = victim.archetype === 'Grandma';
-  const isChad = victim.archetype === 'Chad';
-  const isKaren = victim.archetype === 'Karen';
-  const isSanjay = victim.archetype === 'TechBro';
-  const isDan = victim.archetype === 'Conspiracy';
-  const isPastor = victim.archetype === 'Pastor';
-  const isTyler = victim.archetype === 'FratBoy';
-  const isHarold = victim.archetype === 'Grandpa';
+  const text = playerMessage.toLowerCase().trim();
+  const { victim, trust, suspicion, history, anydeskConnected } = call;
+
+  // Filter previous victim replies so we NEVER repeat the same reply in one call
+  const previousReplies = new Set(
+    history
+      .filter((h) => h.sender === 'victim')
+      .map((h) => h.text.trim())
+  );
+
+  // Turn count
+  const playerTurns = history.filter((h) => h.sender === 'player').length;
 
   let trustDelta = 0;
   let suspicionDelta = 0;
@@ -322,44 +565,140 @@ function generateProceduralResponse(
   let hangsUp = false;
   let reverseHackInitiated = false;
 
-  // Keyword flags
-  const mentionsRemote = text.includes('anydesk') || text.includes('teamviewer') || text.includes('connect') || text.includes('remote') || text.includes('access');
-  const mentionsSecurityOrVirus = text.includes('virus') || text.includes('trojan') || text.includes('zeus') || text.includes('hacked') || text.includes('security') || text.includes('warning') || text.includes('infected');
-  const mentionsRefund = text.includes('refund') || text.includes('5000') || text.includes('5,000') || text.includes('overpaid') || text.includes('mistake') || text.includes('cancel');
-  const mentionsThreat = text.includes('police') || text.includes('arrest') || text.includes('fbi') || text.includes('jail') || text.includes('sheriff') || text.includes('warrant') || text.includes('irs');
-  const mentionsCrypto = text.includes('crypto') || text.includes('bitcoin') || text.includes('btc') || text.includes('coinbase') || text.includes('wallet') || text.includes('seed phrase');
-  const mentionsCard = text.includes('card') || text.includes('cvv') || text.includes('16 digit') || text.includes('expiration') || text.includes('visa') || text.includes('mastercard') || text.includes('debit');
-  const mentionsGiftCard = text.includes('gift card') || text.includes('target') || text.includes('apple') || text.includes('google play') || text.includes('steam') || text.includes('walmart') || text.includes('scratch');
-  const mentionsDoNotTouch = text.includes('do not touch') || text.includes('leave the mouse') || text.includes('terminal') || text.includes('syskey') || text.includes('tree');
-  const isSwearing = text.includes('fuck') || text.includes('bitch') || text.includes('shut up') || text.includes('idiot') || text.includes('bastard') || text.includes('motherfucker') || text.includes('asshole') || text.includes('stupid');
+  // Intents
+  const isIntro =
+    text.includes('amazon') ||
+    text.includes('target') ||
+    text.includes('walmart') ||
+    text.includes('microsoft') ||
+    text.includes('windows') ||
+    text.includes('apple') ||
+    text.includes('coinbase') ||
+    text.includes('bank') ||
+    text.includes('police') ||
+    text.includes('irs') ||
+    text.includes('officer') ||
+    text.includes('support') ||
+    text.includes('department') ||
+    text.includes('refund');
 
-  // --- Scambaiter Jim logic ---
-  if (isJim) {
-    if (suspicion >= 75 || mentionsDoNotTouch || text.includes('bastard')) {
+  const isRemoteCmd =
+    text.includes('anydesk') ||
+    text.includes('teamviewer') ||
+    text.includes('connect') ||
+    text.includes('remote') ||
+    text.includes('code') ||
+    text.includes('link') ||
+    text.includes('download') ||
+    text.includes('access');
+
+  const isSecurityScare =
+    text.includes('virus') ||
+    text.includes('trojan') ||
+    text.includes('zeus') ||
+    text.includes('hacked') ||
+    text.includes('infected') ||
+    text.includes('security') ||
+    text.includes('compromised') ||
+    text.includes('breach');
+
+  const isRefundMention =
+    text.includes('refund') ||
+    text.includes('5000') ||
+    text.includes('5,000') ||
+    text.includes('overpaid') ||
+    text.includes('mistake') ||
+    text.includes('cancel') ||
+    text.includes('money back');
+
+  const isArrestThreat =
+    text.includes('police') ||
+    text.includes('arrest') ||
+    text.includes('fbi') ||
+    text.includes('jail') ||
+    text.includes('sheriff') ||
+    text.includes('warrant') ||
+    text.includes('lawsuit');
+
+  const isCryptoMention =
+    text.includes('bitcoin') ||
+    text.includes('crypto') ||
+    text.includes('btc') ||
+    text.includes('wallet') ||
+    text.includes('seed phrase');
+
+  const isCardRequest =
+    text.includes('card') ||
+    text.includes('cvv') ||
+    text.includes('16 digit') ||
+    text.includes('expiration') ||
+    text.includes('visa') ||
+    text.includes('mastercard') ||
+    text.includes('debit');
+
+  const isGiftCardRequest =
+    text.includes('gift card') ||
+    text.includes('target card') ||
+    text.includes('apple card') ||
+    text.includes('steam') ||
+    text.includes('scratch') ||
+    text.includes('barcode') ||
+    text.includes('walmart card');
+
+  const isDoNotTouch =
+    text.includes('do not touch') ||
+    text.includes('leave mouse') ||
+    text.includes('leave the mouse') ||
+    text.includes('terminal') ||
+    text.includes('cmd') ||
+    text.includes('black screen');
+
+  const isReassurance =
+    text.includes('help') ||
+    text.includes('worry') ||
+    text.includes('calm') ||
+    text.includes('fix') ||
+    text.includes('safe') ||
+    text.includes('okay') ||
+    text.includes('legit');
+
+  const isSwearing =
+    text.includes('fuck') ||
+    text.includes('bitch') ||
+    text.includes('shut up') ||
+    text.includes('idiot') ||
+    text.includes('bastard') ||
+    text.includes('asshole') ||
+    text.includes('stupid');
+
+  // Helper to pick candidate reply that hasn't been said yet
+  const chooseUnique = (options: string[]): string => {
+    const unsaid = options.filter((opt) => !previousReplies.has(opt.trim()));
+    if (unsaid.length > 0) {
+      return unsaid[Math.floor(Math.random() * unsaid.length)];
+    }
+    return options[Math.floor(Math.random() * options.length)];
+  };
+
+  // --- SPECIAL CHARACTER: Scambaiter Jim ---
+  if (victim.archetype === 'Scambaiter') {
+    if (suspicion >= 75 || isDoNotTouch || text.includes('bastard')) {
       suspicionDelta += 25;
       if (suspicion + suspicionDelta >= 100) {
         reply = "WAIT A SECOND, YOU FOOL! Look at your task manager right now. I just traced your IP to Kolkata, encrypted your virtual C: drive, and your webcam is streaming live to YouTube! Bye bye scammer!";
         reverseHackInitiated = true;
         hangsUp = true;
         mood = 'trolling';
-        return {
-          reply,
-          trustDelta: -50,
-          suspicionDelta: 50,
-          revealsCard: false,
-          hangsUp: true,
-          reverseHackInitiated: true,
-          mood: 'trolling',
-        };
       }
-    }
-
-    if (mentionsRemote) {
+    } else if (isRemoteCmd) {
       trustDelta += 15;
       suspicionDelta += 10;
-      reply = "Oh heavens! Yes, I opened AnyDesk on my virtual desktop... code is 492-108-331. Please be careful, my computer has been running so slowly lately!";
+      reply = chooseUnique([
+        "Oh heavens! Yes, I opened AnyDesk on my virtual desktop... code is 492-108-331. Please be careful, my computer has been running so slowly lately!",
+        "Yes young man, AnyDesk says 'Waiting for incoming connection'. Are you connecting now?",
+      ]);
       mood = 'gullible';
-    } else if (mentionsCard || mentionsGiftCard) {
+    } else if (isCardRequest || isGiftCardRequest) {
       if (trust < 60) {
         suspicionDelta += 30;
         reply = "Why on earth would Microsoft support need an Apple gift card or my debit card security digits? That sounds very strange young man...";
@@ -372,237 +711,219 @@ function generateProceduralResponse(
     } else {
       trustDelta += 10;
       suspicionDelta += 5;
-      reply = "Oh my goodness, really? Zeus Trojan virus from Russian hackers? Sir please help me, I have all my family holiday photos on this computer!";
+      reply = chooseUnique([
+        "Oh my goodness, really? Zeus Trojan virus from Russian hackers? Sir please help me, I have all my family holiday photos on this computer!",
+        "I'm looking at my screen right now. Should I put my mouse in the microwave to stop the virus?",
+        "Wait, are you from the technical team or the refund team? The line sounds like a busy train station in Delhi!",
+      ]);
       mood = 'gullible';
     }
-
-    return {
-      reply,
-      trustDelta,
-      suspicionDelta,
-      revealsCard,
-      cardNumber: revealsCard ? victim.hiddenCardNumber : undefined,
-      cardCvv: revealsCard ? victim.hiddenCvv : undefined,
-      cardExpiry: revealsCard ? victim.hiddenExpiry : undefined,
-      revealsGiftCard: false,
-      hangsUp,
-      reverseHackInitiated,
-      mood,
-    };
   }
 
-  // --- Grandma Ethel ---
-  if (isEthel) {
+  // --- Tyler "KegStand" Brooks (FratBoy) ---
+  else if (victim.archetype === 'FratBoy') {
     if (isSwearing) {
-      trustDelta -= 20;
-      suspicionDelta += 15;
-      reply = "Oh my word! There is no need for such foul language young man! My grandson Jimmy never speaks to his elders like that! I'm going to put the phone down!";
-      mood = 'terrified';
-      if (trust + trustDelta <= 15) hangsUp = true;
-    } else if (mentionsDoNotTouch) {
-      trustDelta += 15;
-      reply = "I'm not touching anything! I put my hands up in the air like you told me! Is the screen supposed to turn black with green letters?";
-      mood = 'terrified';
-    } else if (mentionsRefund && text.includes('5000')) {
-      trustDelta += 20;
-      suspicionDelta -= 5;
-      reply = "Oh dear Lord! You gave me FIVE THOUSAND DOLLARS instead of fifty?! Oh heavens, I don't want to get into trouble with the bank! How do I give it back to you, darling?";
-      mood = 'terrified';
-    } else if (mentionsGiftCard) {
+      trustDelta += 12;
+      reply = chooseUnique([
+        "Broooo no cap that's hilarious! Wait did you say my account is cooked? Am I going to jail for the tailgate party?",
+        "Bro chill! Why are you screaming at me? I literally woke up ten minutes ago!",
+      ]);
+      mood = 'confused';
+    } else if (isCardRequest) {
       if (trust > 60) {
-        revealsGiftCard = true;
-        reply = `Alright dear, I drove to the Target store like you asked and the nice boy sold me this card. I scratched the silver stuff off... code is ${victim.hiddenGiftCard}. Did that fix my bank account?`;
+        revealsCard = true;
+        reply = `Bro just take my dad's Amex before he checks his statements: ${victim.hiddenCardNumber}, CVV ${victim.hiddenCvv}, exp ${victim.hiddenExpiry}. Just fix it so I can play Warzone!`;
         mood = 'cooperative';
       } else {
         suspicionDelta += 25;
-        reply = "Gift cards? To fix my computer? Why can't I just write you a check from my Chase account dear?";
+        reply = "Wait why do you need my 16 digits right now? Bro my dad will kill me if there is a weird charge on his card!";
         mood = 'confused';
       }
-    } else if (mentionsCard) {
-      if (trust > 70) {
+    } else if (isGiftCardRequest) {
+      if (trust > 60) {
+        revealsGiftCard = true;
+        reply = `Yo I got this Steam gift card from my roommate for my birthday: ${victim.hiddenGiftCard}. Can you take that and wipe the fee?`;
+        mood = 'cooperative';
+      } else {
+        suspicionDelta += 30;
+        reply = "Why would Amazon want a Target or Steam gift card? Bro that sounds mad sketchy!";
+        mood = 'angry';
+      }
+    } else if (isIntro) {
+      trustDelta += 10;
+      reply = chooseUnique([
+        "Wait, Amazon?! Bro I didn't order anything except a 30-rack of Natty Light and a ping pong table... did someone hack my account?!",
+        "Wait is this really official support? Bro who gave you my personal cell number?!",
+        "Yo hold up... my account has an unauthorized charge?! How much was it?!",
+      ]);
+      mood = 'confused';
+    } else if (isRemoteCmd) {
+      trustDelta += 15;
+      reply = chooseUnique([
+        "Aight wait, what app do I download? AnyDesk? Let me search the app store... aight code says 782-119-440, are you in?",
+        "Yeah my laptop is open. Where do I click to let you connect?",
+      ]);
+      mood = 'cooperative';
+    } else if (isSecurityScare || isRefundMention) {
+      trustDelta += 12;
+      reply = chooseUnique([
+        "Bro what the f***?! A $5,000 accidental transfer?! I swear on my fraternity I didn't touch anything!",
+        "Yo fix it please! If my bank balance goes negative my dad is cutting off my rent money!",
+      ]);
+      mood = 'terrified';
+    } else if (isArrestThreat) {
+      trustDelta += 15;
+      suspicionDelta += 10;
+      reply = chooseUnique([
+        "POLICE?! Bro what did I do?! Was it the fireworks on the roof last weekend?! Don't send cops bro!",
+        "Yo I cannot have an arrest warrant! I'm applying for internships this semester!",
+      ]);
+      mood = 'terrified';
+    } else if (isReassurance) {
+      trustDelta += 10;
+      reply = chooseUnique([
+        "Okay okay, thanks bro. Tell me what I gotta do, I'm listening.",
+        "Aight man, as long as my bank account isn't drained, I'm good. What's next?",
+      ]);
+      mood = 'cooperative';
+    } else {
+      // Dynamic conversational fallback based on turn count
+      trustDelta += 6;
+      if (playerTurns <= 1) {
+        reply = chooseUnique([
+          "Bro who is this? Did Austin give you my number for the tailgate party?",
+          "Hello? Who is calling my phone right now?",
+        ]);
+      } else if (playerTurns === 2) {
+        reply = chooseUnique([
+          "Wait bro, talk slower, I got a massive hangover. What is this call actually about?",
+          "Wait... you can see my screen or my phone? What are you talking about?",
+        ]);
+      } else {
+        reply = chooseUnique([
+          "Okay bro, look, just tell me straight up: am I in trouble or what?",
+          "Aight, so what do I need to click on to clear this up?",
+          "Bro I gotta jump in the shower in five minutes, can we wrap this up fast?",
+        ]);
+      }
+      mood = 'confused';
+    }
+  }
+
+  // --- Grandma Ethel Higgins ---
+  else if (victim.archetype === 'Grandma') {
+    if (isSwearing) {
+      trustDelta -= 20;
+      suspicionDelta += 15;
+      reply = "Oh gracious me! Young man, wash your mouth out with soap! My late husband Harold never spoke like that!";
+      mood = 'angry';
+    } else if (isCardRequest) {
+      if (trust > 65) {
         revealsCard = true;
-        reply = `Okay sweetheart, let me put on my reading glasses... it says ${victim.hiddenCardNumber}, expires ${victim.hiddenExpiry}, and the three little numbers on the back are ${victim.hiddenCvv}. Please don't let the hackers take my pension!`;
+        reply = `Alright dear, my reading glasses are on... the numbers are ${victim.hiddenCardNumber}, and the little security digits on the back say ${victim.hiddenCvv}. Did that fix the computer?`;
+        mood = 'cooperative';
+      } else {
+        suspicionDelta += 25;
+        reply = "My grandson Jimmy told me never to read my bank plastic card to folks over the telephone line...";
+        mood = 'confused';
+      }
+    } else if (isGiftCardRequest) {
+      if (trust > 65) {
+        revealsGiftCard = true;
+        reply = `Oh honey, I had Jimmy drive me to Target yesterday for my yarn and I got this card: ${victim.hiddenGiftCard}. Do I read you the numbers on the back?`;
         mood = 'cooperative';
       } else {
         suspicionDelta += 20;
-        reply = "My card numbers? But my daughter told me never to read those over the telephone...";
+        reply = "A gift card? For the computer virus? Why would the government want Target gift cards dear?";
         mood = 'confused';
       }
-    } else if (mentionsRemote) {
+    } else if (isDoNotTouch) {
       trustDelta += 15;
-      reply = "AnyDesk? Wait, is that the red icon with the two squares? I think I clicked it... a number popped up: 881-204-912. Are you inside my television?";
-      mood = 'confused';
-    } else if (mentionsSecurityOrVirus || mentionsThreat) {
-      trustDelta += 18;
-      reply = "Foreign hackers?! Oh mercy me! Please sir, do whatever you need to do, I only use this machine for Facebook and ordering knitting yarn!";
+      reply = "I'm not touching it! My hands are up in the air! Please don't let the Russian hackers see my photo albums!";
       mood = 'terrified';
-    } else {
-      trustDelta += 8;
-      reply = "Hello? Yes dear, I can hear you, but the line is crackling. What department did you say you were calling from again?";
-      mood = 'confused';
-    }
-  }
-
-  // --- Sanjay (Tech Bro) ---
-  else if (isSanjay) {
-    if (mentionsSecurityOrVirus || mentionsRemote) {
-      trustDelta += 18;
-      reply = "Okay let's sync up on this blocker. I'm opening AnyDesk, let's treat this Zeus virus like a P0 critical outage. What's the root cause analysis?";
+    } else if (isRemoteCmd) {
+      trustDelta += 15;
+      reply = chooseUnique([
+        "AnyDesk? Is that that little red diamond thing on my screen? It says '912 401 883'. Did you get that honey?",
+        "Okay dear, I clicked the little icon. A box popped up asking if I want to allow you in. Should I click the green button?",
+      ]);
       mood = 'cooperative';
-    } else if (mentionsCard && trust > 60) {
-      revealsCard = true;
-      reply = `Fine, let me expense this on the corporate Visa card to expedite the SLA: ${victim.hiddenCardNumber}, CVV ${victim.hiddenCvv}, exp ${victim.hiddenExpiry}. Send me the invoice on Slack.`;
-      mood = 'cooperative';
-    } else if (mentionsGiftCard) {
-      suspicionDelta += 35;
-      reply = "Wait, an Apple gift card for an infrastructure patch? That doesn't match our enterprise procurement policy. Who is your VP of Engineering?";
-      mood = 'angry';
-    } else {
-      trustDelta += 10;
-      reply = "Hey, let's take this offline or loop in DevOps. Are we tracking this incident in Jira or PagerDuty?";
-      mood = 'confused';
-    }
-  }
-
-  // --- Dan (Conspiracy) ---
-  else if (isDan) {
-    if (mentionsThreat || mentionsSecurityOrVirus) {
-      trustDelta += 22;
-      suspicionDelta += 15;
-      reply = "I KNEW IT! The 5G microwave radiation from the satellite constellation! Are they tapping my landline right now?! Tell me what frequency they're using!";
+    } else if (isSecurityScare || isRefundMention) {
+      trustDelta += 15;
+      reply = chooseUnique([
+        "Oh heavens above! Five thousand dollars?! Sir, I only get seven hundred on my social security pension! Please don't take my medicine money!",
+        "A virus from Russia?! On my machine?! Oh Lord, Harold told me not to open that recipe email from church!",
+      ]);
       mood = 'terrified';
-    } else if (mentionsGiftCard && trust > 65) {
-      revealsGiftCard = true;
-      reply = `I wrapped the Target card in heavy duty aluminum foil so the CIA satellites can't scan the barcode! The code is ${victim.hiddenGiftCard}! Don't let them trace this!`;
-      mood = 'cooperative';
-    } else if (isSwearing) {
-      suspicionDelta += 30;
-      reply = "You're an MK-Ultra federal agent! I'm destroying my hard drive with a microwave oven right now!";
-      hangsUp = true;
-      mood = 'angry';
-    } else {
-      trustDelta += 5;
-      reply = "Who gave you this unlisted number? Was it the Rothschilds or the NSA?";
-      mood = 'confused';
-    }
-  }
-
-  // --- Pastor Ezekiel ---
-  else if (isPastor) {
-    if (mentionsSecurityOrVirus || mentionsRefund) {
+    } else if (isArrestThreat) {
       trustDelta += 20;
-      reply = "Hallelujah! The Lord works in mysterious ways, my son! If someone has committed theft on our church account, we must pray for their salvation! How can our ministry make this right?";
-      mood = 'cooperative';
-    } else if (mentionsGiftCard && trust > 60) {
-      revealsGiftCard = true;
-      reply = `Praise Jesus, I have a Walmart voucher here blessed by the deacon board. The holy redemption digits are ${victim.hiddenGiftCard}. May God bless your call center!`;
-      mood = 'cooperative';
-    } else if (mentionsCard && trust > 65) {
-      revealsCard = true;
-      reply = `Take the church tithing card, brother: ${victim.hiddenCardNumber}, CVV ${victim.hiddenCvv}, expires ${victim.hiddenExpiry}. Let not evil triumph over our computer!`;
-      mood = 'cooperative';
-    } else {
-      trustDelta += 12;
-      reply = "Bless you, brother! Thank you for watching over our flock. Speak your heart, I am listening.";
-      mood = 'cooperative';
-    }
-  }
-
-  // --- Tyler (Frat Boy) ---
-  else if (isTyler) {
-    if (isSwearing) {
-      trustDelta += 15;
-      reply = "Broooo no cap that's hilarious! Wait did you say my account is cooked? Am I going to jail for the tailgate party?";
-      mood = 'confused';
-    } else if (mentionsCard && trust > 60) {
-      revealsCard = true;
-      reply = `Bro just charge my dad's Amex before he checks his statements: ${victim.hiddenCardNumber}, CVV ${victim.hiddenCvv}, exp ${victim.hiddenExpiry}. Just fix it so I can play Warzone!`;
-      mood = 'cooperative';
-    } else if (mentionsGiftCard && trust > 60) {
-      revealsGiftCard = true;
-      reply = `Yo I got this Steam card from my roommate for my birthday: ${victim.hiddenGiftCard}. Can you take that and wipe the fee?`;
-      mood = 'cooperative';
+      reply = "Arrest warrant?! For Ethel Higgins?! Sir, I haven't even had a speeding ticket since 1974! Please don't send the federal marshals to Boca Raton!";
+      mood = 'terrified';
     } else {
       trustDelta += 8;
-      reply = "Yo who is this? Did Austin give you my number? Where is the afterparty?";
+      reply = chooseUnique([
+        "Hello dear? You're speaking so fast... is this regarding my Sears catalog order?",
+        "Who is calling please? Is this the nice boy from the telephone exchange?",
+        "Hold on dear, let me turn down my television... Jeopardy is on. What did you say happened?",
+        "My grandson Jimmy usually takes care of the computer. Can you explain it very simply?",
+      ]);
       mood = 'confused';
     }
   }
 
-  // --- Grandpa Harold ---
-  else if (isHarold) {
-    if (mentionsRemote || mentionsSecurityOrVirus) {
-      trustDelta += 18;
-      reply = "SPEAK UP YOUNG FELLA! THE COMPUTER IS BUZZING LIKE A LAWNMOWER! DO I PRESS THE BIG SQUARE BUTTON WITH THE LIGHT?!";
-      mood = 'confused';
-    } else if (mentionsCard && trust > 60) {
-      revealsCard = true;
-      reply = `HOLD YOUR HORSES! LET ME FIND MY MAGNIFYING GLASS... IT SAYS ${victim.hiddenCardNumber}... BACK SAYS ${victim.hiddenCvv}! CAN I HANG UP NOW? MY SOUP IS GETTING COLD!`;
-      mood = 'cooperative';
-    } else {
-      trustDelta += 10;
-      reply = "WHAT?! IS THIS SEARS ROEBUCK?! I ORDERED A REPLACEMENT LAWN MOWER BELT THREE WEEKS AGO!";
-      mood = 'confused';
-    }
-  }
-
-  // --- Chad Bro ---
-  else if (isChad) {
+  // --- Chad "CryptoKing" Henderson ---
+  else if (victim.archetype === 'Chad') {
     if (isSwearing) {
+      trustDelta += 10;
       suspicionDelta -= 5;
-      trustDelta += 10;
-      reply = "Bro finally, someone who talks real! These corporate support nerds usually speak like robots. What the hell happened to my wallet?!";
+      reply = chooseUnique([
+        "Bro finally, someone who talks real! These corporate support nerds usually speak like robots. What the hell happened to my wallet?!",
+        "Bro don't yell at me, I'm down 60% on Ethereum this week already!",
+      ]);
       mood = 'angry';
-    } else if (mentionsCrypto || mentionsSecurityOrVirus) {
-      trustDelta += 15;
-      suspicionDelta += 5;
-      reply = "BRO WHAT?! Someone initiated a 2.4 BTC withdrawal from an IP in Russia?! Freeze that immediately! What do I need to approve on my end?!";
-      mood = 'angry';
-    } else if (mentionsRemote) {
-      trustDelta += 10;
-      suspicionDelta += 10;
-      reply = "Yeah yeah whatever, AnyDesk ID is 712-409-110. Connect fast bro, I'm watching the 15-minute candle chart collapse right now!";
-      mood = 'angry';
-    } else if (mentionsCard) {
+    } else if (isCryptoMention || isSecurityScare) {
+      trustDelta += 18;
+      reply = chooseUnique([
+        "BRO WHAT?! An unauthorized API withdrawal from an IP in Moscow?! Freeze that transaction right now! What do I need to approve on my end?!",
+        "Bro is my seed phrase compromised?! I have 1.4 Bitcoin on that ledger, bro if that gets drained I'm ruined!",
+      ]);
+      mood = 'terrified';
+    } else if (isCardRequest) {
       if (trust > 65) {
         revealsCard = true;
-        reply = `Fine, take the card for the gas fee override: ${victim.hiddenCardNumber}, CVV ${victim.hiddenCvv}, exp ${victim.hiddenExpiry}. Just make sure my seed phrase isn't leaked!`;
+        reply = `Fine, take the card for the gas fee override: ${victim.hiddenCardNumber}, CVV ${victim.hiddenCvv}, exp ${victim.hiddenExpiry}. Just make sure my ledger wallet is safe!`;
         mood = 'cooperative';
       } else {
         suspicionDelta += 35;
         reply = "Hold on bro... why does Coinbase Security need my debit card CVV to cancel an on-chain transaction? You sound suspect as hell right now.";
         mood = 'angry';
       }
-    } else if (mentionsGiftCard) {
-      suspicionDelta += 40;
-      reply = "Are you seriously asking me to buy an Apple gift card to verify my crypto node?! LMAO what kind of clown show is this?!";
+    } else if (isRemoteCmd) {
+      trustDelta += 12;
+      reply = "Yeah yeah whatever, AnyDesk ID is 712-409-110. Connect fast bro, I'm watching the 15-minute candle chart collapse right now!";
       mood = 'angry';
     } else {
       trustDelta += 5;
-      suspicionDelta += 5;
-      reply = "Yo bro, make it quick, I'm in the middle of a gym set and my pre-workout is kicking in. What's the issue?";
+      reply = chooseUnique([
+        "Yo make it quick bro, I'm in the middle of a gym set and my pre-workout is kicking in. What's the issue?",
+        "Bro who is this? If you're selling solar panels or auto insurance I'm hanging up right now.",
+        "Coinbase? Wait, which exchange did you say? Did my stop-loss trigger?",
+      ]);
       mood = 'confused';
     }
   }
 
-  // --- Karen Miller ---
-  else if (isKaren) {
-    if (mentionsThreat) {
+  // --- Karen Miller-Smith ---
+  else if (victim.archetype === 'Karen') {
+    if (isArrestThreat) {
       trustDelta += 20;
       suspicionDelta -= 5;
-      reply = "Arrest warrant?! From the Department of Treasury?! Excuse me, this is an outrage, I paid my TurboTax fee! How much do I owe to dismiss this right now?!";
+      reply = chooseUnique([
+        "Arrest warrant?! From the Department of Treasury?! Excuse me, this is an outrage, I paid my TurboTax fee! How much do I owe to dismiss this right now?!",
+        "Do you know who my brother-in-law is?! He is a county judge! You cannot put a warrant on Karen Miller!",
+      ]);
       mood = 'terrified';
-    } else if (mentionsGiftCard) {
-      if (trust > 70) {
-        revealsGiftCard = true;
-        reply = `I am at the Walmart customer service desk right now and the manager was extremely rude! Here is the code on the back: ${victim.hiddenGiftCard}. You better send me an official government tax receipt!`;
-        mood = 'angry';
-      } else {
-        suspicionDelta += 30;
-        reply = "The IRS accepts Target gift cards for back taxes?! Do you think I was born yesterday?! Let me speak to your supervisor THIS INSTANT!";
-        mood = 'angry';
-      }
-    } else if (mentionsCard) {
+    } else if (isCardRequest) {
       if (trust > 65) {
         revealsCard = true;
         reply = `Take the card details and process the penalty fee: ${victim.hiddenCardNumber}, ${victim.hiddenCvv}, exp ${victim.hiddenExpiry}. I will be calling my attorney to contest this later!`;
@@ -612,34 +933,58 @@ function generateProceduralResponse(
         reply = "I am NOT reading my card over an unverified line! What is your badge identification number?!";
         mood = 'angry';
       }
+    } else if (isGiftCardRequest) {
+      if (trust > 70) {
+        revealsGiftCard = true;
+        reply = `I am at the Walmart customer service desk right now and the manager was extremely rude! Here is the code on the back: ${victim.hiddenGiftCard}. You better send me an official government tax receipt!`;
+        mood = 'angry';
+      } else {
+        suspicionDelta += 35;
+        reply = "The IRS accepts Target gift cards for back taxes?! Do you think I was born yesterday?! Let me speak to your supervisor THIS INSTANT!";
+        mood = 'angry';
+      }
     } else {
       suspicionDelta += 10;
-      reply = "Who authorized this call? I am on the National Do Not Call Registry! I will have you audited and fined!";
+      reply = chooseUnique([
+        "Who authorized this call? I am on the National Do Not Call Registry! What company is this?!",
+        "Excuse me, I demand to speak to your manager right now! What is your employee ID number?!",
+        "I am recording this call for legal purposes. Identify yourself and your department!",
+      ]);
       mood = 'angry';
     }
   }
 
-  // --- Default / Uncle Bob ---
+  // --- Sanjay (TechBro), Pastor, Harold, Bob (Universal dynamic procedural fallback) ---
   else {
-    if (mentionsRefund || mentionsSecurityOrVirus) {
-      trustDelta += 15;
-      reply = "Well butter my biscuits, you say somebody ordered three riding lawnmowers to an address in Lagos on my Amazon account?! Hell no, cancel that order right now son!";
-      mood = 'angry';
-    } else if (mentionsRemote) {
-      trustDelta += 12;
-      reply = "Alright, let me find that AnyDesk icon. My grandson Jimmy put it on the desktop right next to Solitaire. Code says 551-820-339.";
-      mood = 'cooperative';
-    } else if (mentionsGiftCard && trust > 65) {
-      revealsGiftCard = true;
-      reply = `Got the card right here out of my toolbox. Code is ${victim.hiddenGiftCard}. Hope this squares away the account balance!`;
-      mood = 'cooperative';
-    } else if (mentionsCard && trust > 65) {
+    if (isCardRequest && trust > 60) {
       revealsCard = true;
-      reply = `Let me pull the leather wallet out. Card number is ${victim.hiddenCardNumber}, CVV ${victim.hiddenCvv}, expires ${victim.hiddenExpiry}.`;
+      reply = `Alright, here are the numbers: ${victim.hiddenCardNumber}, CVV ${victim.hiddenCvv}, expiry ${victim.hiddenExpiry}. Please get this resolved quickly!`;
       mood = 'cooperative';
+    } else if (isGiftCardRequest && trust > 60) {
+      revealsGiftCard = true;
+      reply = `I've got the card code right here: ${victim.hiddenGiftCard}. Can you verify this clears the balance?`;
+      mood = 'cooperative';
+    } else if (isRemoteCmd) {
+      trustDelta += 15;
+      reply = chooseUnique([
+        "Okay, I have AnyDesk open on my screen. Code is 551-820-339. Can you see my desktop now?",
+        "I clicked the link. It's asking for permission to share my screen... I clicked Allow.",
+      ]);
+      mood = 'cooperative';
+    } else if (isSecurityScare || isRefundMention) {
+      trustDelta += 15;
+      reply = chooseUnique([
+        "Wait, what?! An unauthorized charge on my account?! How did that happen?!",
+        "A Zeus Trojan?! Is that why my computer fans have been spinning so loud today?!",
+      ]);
+      mood = 'terrified';
     } else {
       trustDelta += 8;
-      reply = "Hold your horses there partner, talk a little slower. My hearing ain't what it used to be since my days at the foundry.";
+      reply = chooseUnique([
+        "Hello? Who is calling please? Can you explain what this is about?",
+        "Yes, I'm here. Talk a little louder, the line is a bit crackly.",
+        "What did you say your name was? Which department are you with?",
+      ]);
       mood = 'confused';
     }
   }
@@ -651,9 +996,10 @@ function generateProceduralResponse(
   if (finalSuspicion >= 100) {
     hangsUp = true;
     if (!reverseHackInitiated) {
-      reply = isChad || isKaren 
-        ? "You know what? You're a fake scammer scamming from a basement! GET A REAL JOB! *SLAM*" 
-        : "I know you're trying to swindle me! I'm calling the police right now! *CLICK*";
+      reply = chooseUnique([
+        "You know what? You're a fake scammer calling from a call center! GET A REAL JOB! *SLAM*",
+        "I know you're trying to swindle me! I'm calling the police right now! *CLICK*",
+      ]);
       mood = 'angry';
     }
   } else if (finalTrust <= 0) {
@@ -687,223 +1033,4 @@ export function generateRandomVictim(excludeId?: string): VictimProfile {
     baseTrust: Math.max(10, Math.min(60, picked.baseTrust + Math.floor((Math.random() - 0.5) * 10))),
     baseSuspicion: Math.max(5, Math.min(50, picked.baseSuspicion + Math.floor((Math.random() - 0.5) * 10))),
   };
-}
-
-// Helper to get loaded voices safely (handles async voice loading in Chrome/Edge/Firefox)
-export function getAvailableVoices(): Promise<SpeechSynthesisVoice[]> {
-  if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
-    return Promise.resolve([]);
-  }
-
-  const existing = window.speechSynthesis.getVoices();
-  if (existing && existing.length > 0) {
-    return Promise.resolve(existing);
-  }
-
-  return new Promise((resolve) => {
-    let resolved = false;
-    const onVoicesChanged = () => {
-      if (resolved) return;
-      const voices = window.speechSynthesis.getVoices();
-      if (voices && voices.length > 0) {
-        resolved = true;
-        window.speechSynthesis.removeEventListener('voiceschanged', onVoicesChanged);
-        resolve(voices);
-      }
-    };
-
-    window.speechSynthesis.addEventListener('voiceschanged', onVoicesChanged);
-    setTimeout(() => {
-      if (!resolved) {
-        resolved = true;
-        window.speechSynthesis.removeEventListener('voiceschanged', onVoicesChanged);
-        resolve(window.speechSynthesis.getVoices() || []);
-      }
-    }, 350);
-  });
-}
-
-// Select the most natural, human-sounding voice available
-export function pickNaturalVoice(
-  victim: VictimProfile,
-  voices: SpeechSynthesisVoice[]
-): SpeechSynthesisVoice | null {
-  if (!voices || voices.length === 0) return null;
-
-  const enVoices = voices.filter((v) => v.lang.toLowerCase().startsWith('en'));
-  const candidatePool = enVoices.length > 0 ? enVoices : voices;
-
-  const isFemale =
-    victim.archetype === 'Grandma' ||
-    victim.archetype === 'Karen';
-
-  // Scoring function that heavily favors Natural / Online / Neural / Enhanced voices
-  const scoreVoice = (voice: SpeechSynthesisVoice) => {
-    const name = voice.name.toLowerCase();
-    const lang = voice.lang.toLowerCase();
-
-    // Ancient robotic Windows voices to avoid
-    const isRobotic =
-      name.includes('desktop') ||
-      name.includes('zira') ||
-      name.includes('david') ||
-      name.includes('hazel') ||
-      name.includes('mark');
-
-    let score = 0;
-    if (name.includes('natural')) score += 120;
-    if (name.includes('online')) score += 100;
-    if (name.includes('neural')) score += 90;
-    if (name.includes('enhanced')) score += 80;
-    if (name.includes('google')) score += 70;
-    if (name.includes('premium')) score += 60;
-    if (name.includes('siri')) score += 50;
-
-    if (isRobotic) score -= 100;
-
-    // Archetype-specific targeting
-    if (victim.archetype === 'Scambaiter') {
-      // British gentleman
-      if (lang.includes('gb') || name.includes('uk') || name.includes('british') || name.includes('ryan') || name.includes('oliver') || name.includes('daniel')) {
-        score += 80;
-      }
-    } else if (isFemale) {
-      if (
-        name.includes('female') ||
-        name.includes('jenny') ||
-        name.includes('aria') ||
-        name.includes('michelle') ||
-        name.includes('samantha') ||
-        name.includes('karen') ||
-        name.includes('sonia') ||
-        name.includes('victoria') ||
-        name.includes('ava')
-      ) {
-        score += 50;
-      }
-    } else {
-      if (
-        name.includes('male') ||
-        name.includes('guy') ||
-        name.includes('christopher') ||
-        name.includes('eric') ||
-        name.includes('daniel') ||
-        name.includes('alex') ||
-        name.includes('fred')
-      ) {
-        score += 50;
-      }
-    }
-
-    return score;
-  };
-
-  const sorted = [...candidatePool].sort((a, b) => scoreVoice(b) - scoreVoice(a));
-  return sorted[0] || candidatePool[0];
-}
-
-// AI Voice Player (TTS via server or Enhanced Web Speech API fallback)
-export async function speakVictimResponse(
-  text: string,
-  victim: VictimProfile,
-  onStart?: () => void,
-  onEnd?: () => void
-): Promise<void> {
-  if (typeof window === 'undefined') return;
-
-  onStart?.();
-
-  // Strip stage directions like *SLAM* or [AUDIO] so synthesis speaks natural words
-  const cleanSpokenText = text
-    .replace(/\*([^*]+)\*/g, '')
-    .replace(/\[([^\]]+)\]/g, '')
-    .trim();
-
-  if (!cleanSpokenText) {
-    onEnd?.();
-    return;
-  }
-
-  // 1. Try Server Gemini TTS first (if deployed with serverless /api/tts)
-  try {
-    const res = await fetch('/api/tts', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        text: cleanSpokenText,
-        voiceName: victim.ttsVoice || 'Kore',
-        style: victim.speechStyle || 'Conversational phone caller',
-      }),
-    });
-
-    if (res.ok) {
-      const data = await res.json();
-      if (data.audio) {
-        const AudioContextClass =
-          window.AudioContext ||
-          (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-        const ctx = new AudioContextClass();
-        const binary = atob(data.audio);
-        const bytes = new Uint8Array(binary.length);
-        for (let i = 0; i < binary.length; i++) {
-          bytes[i] = binary.charCodeAt(i);
-        }
-        try {
-          const buffer = await ctx.decodeAudioData(bytes.buffer);
-          const source = ctx.createBufferSource();
-          source.buffer = buffer;
-          source.connect(ctx.destination);
-          source.onended = () => {
-            onEnd?.();
-            ctx.close();
-          };
-          source.start();
-          return;
-        } catch {
-          // If decode fails, proceed to natural browser TTS
-        }
-      }
-    }
-  } catch {
-    // Proceed to enhanced natural browser TTS fallback
-  }
-
-  // 2. Enhanced Natural Browser Web Speech API
-  if ('speechSynthesis' in window) {
-    try {
-      window.speechSynthesis.cancel();
-
-      const voices = await getAvailableVoices();
-      const chosenVoice = pickNaturalVoice(victim, voices);
-
-      const utterance = new SpeechSynthesisUtterance(cleanSpokenText);
-
-      // Keep pitch in subtle, natural conversational human range (0.94 - 1.05)
-      const clampedPitch = Math.max(0.93, Math.min(1.05, victim.speechPitch ?? 1.0));
-      const clampedRate = Math.max(0.90, Math.min(1.08, victim.speechRate ?? 1.0));
-
-      utterance.pitch = clampedPitch;
-      utterance.rate = clampedRate;
-
-      if (chosenVoice) {
-        utterance.voice = chosenVoice;
-        utterance.lang = chosenVoice.lang;
-      }
-
-      utterance.onend = () => {
-        onEnd?.();
-      };
-      utterance.onerror = (e) => {
-        console.warn('SpeechSynthesis error:', e);
-        onEnd?.();
-      };
-
-      window.speechSynthesis.speak(utterance);
-    } catch (err) {
-      console.warn('Speech synthesis failed:', err);
-      onEnd?.();
-    }
-  } else {
-    onEnd?.();
-  }
 }

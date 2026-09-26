@@ -304,7 +304,11 @@ export default function App() {
     setIsProcessing(true);
 
     try {
-      const result = await processDialogue(currentCall, msg);
+      const callWithUpdatedHistory: ActiveCall = {
+        ...currentCall,
+        history: updatedHistory,
+      };
+      const result = await processDialogue(callWithUpdatedHistory, msg);
 
       const hasSoundboard = upgrades.some((u) => u.id === 'soundboard' && u.purchased);
       const effectiveTrustDelta = result.trustDelta > 0 && hasSoundboard ? result.trustDelta + 5 : result.trustDelta;

@@ -57,30 +57,31 @@ export const PhoneDialer: React.FC<PhoneDialerProps> = ({
     isMicActive,
     isMuted: isMicMuted,
     audioLevel,
-    interimText,
-    finalText,
+    liveTranscript,
     errorMessage: micError,
+    showPermissionGuide,
+    setShowPermissionGuide,
     isRecognitionSupported,
     requestPermission,
     toggleMute,
     stopMic,
-    clearTranscript,
+    clearLiveTranscript,
   } = useMicrophone({
-    onTranscriptFinal: (speechText) => {
-      if (speechText && currentCall && currentCall.status === 'connected' && !isProcessing) {
+    onLiveTranscript: (spokenText) => {
+      // Live streaming: instantly shows words in the input box as you speak
+      setInputText(spokenText);
+    },
+    onTranscriptComplete: (finalSpokenText) => {
+      // Auto-send when user stops talking (detected silence)
+      if (finalSpokenText && currentCall && currentCall.status === 'connected' && !isProcessing) {
         playKeyboardClick();
-        onSendMessage(speechText);
+        setInputText('');
+        clearLiveTranscript();
+        onSendMessage(finalSpokenText);
       }
     },
-    autoSendDelayMs: 1400,
+    silenceDelayMs: 1100,
   });
-
-  // Sync spoken words to input field
-  useEffect(() => {
-    if (finalText) {
-      setInputText(finalText);
-    }
-  }, [finalText]);
 
   // Auto-scroll chat transcript to bottom
   useEffect(() => {
@@ -133,7 +134,7 @@ export const PhoneDialer: React.FC<PhoneDialerProps> = ({
 
     const text = inputText.trim();
     setInputText('');
-    clearTranscript();
+    clearLiveTranscript();
 
     if (text.startsWith('/')) {
       onCommand(text);
@@ -395,19 +396,37 @@ export const PhoneDialer: React.FC<PhoneDialerProps> = ({
           {/* Interactive Microphone & VOIP Line Controls */}
           {currentCall && (
             <div className="border-b border-zinc-800">
-              {permissionState === 'denied' ? (
-                <div className="bg-red-950/60 p-2.5 flex items-center gap-2 text-xs text-red-300">
-                  <MicOff className="w-4 h-4 text-red-400 shrink-0" />
-                  <span>
-                    <strong>MIC PERMISSION DENIED:</strong> Browser blocked microphone access. Click the camera/lock icon in your browser URL bar to allow microphone.
-                  </span>
+              {permissionState === 'denied' || showPermissionGuide ? (
+                <div className="bg-red-950/80 p-2.5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-red-200 border-b border-red-800">
+                  <div className="flex items-center gap-2">
+                    <MicOff className="w-4 h-4 text-red-400 shrink-0" />
+                    <span>
+                      <strong>MIC ACCESS BLOCKED:</strong> Click the <strong>lock/settings icon 🔒</strong> on the left side of your browser URL bar, set <strong>Microphone</strong> to <strong>"Allow"</strong>, then click Try Again!
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2 shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => requestPermission()}
+                      className="px-2.5 py-1 bg-red-600 hover:bg-red-500 text-white font-bold rounded text-[11px] transition-colors"
+                    >
+                      TRY AGAIN
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setShowPermissionGuide(false)}
+                      className="px-2 py-1 bg-zinc-800 hover:bg-zinc-700 text-zinc-300 rounded text-[11px]"
+                    >
+                      DISMISS
+                    </button>
+                  </div>
                 </div>
               ) : !isMicActive ? (
                 <div className="bg-amber-950/40 p-2.5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-amber-200">
                   <div className="flex items-center gap-2">
                     <Mic className="w-4 h-4 text-amber-400 animate-pulse" />
                     <span>
-                      <strong>LIVE VOIP MICROPHONE:</strong> Speak directly to {currentCall.victim.name} using your voice!
+                      <strong>LIVE VOIP MICROPHONE:</strong> Speak directly to {currentCall.victim.name} using your voice! Words auto-type & auto-send on pause.
                     </span>
                   </div>
                   <button
@@ -416,7 +435,7 @@ export const PhoneDialer: React.FC<PhoneDialerProps> = ({
                     className="px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-black font-extrabold rounded text-xs flex items-center gap-1.5 transition-all shadow-md shadow-amber-950"
                   >
                     <Mic className="w-3.5 h-3.5 fill-black" />
-                    <span>GRANT MIC PERMISSION</span>
+                    <span>ENABLE MICROPHONE</span>
                   </button>
                 </div>
               ) : (
@@ -429,7 +448,7 @@ export const PhoneDialer: React.FC<PhoneDialerProps> = ({
                       }`}
                     />
                     <span className="font-bold text-[11px] text-zinc-300">
-                      {isMicMuted ? 'YOUR MIC: MUTED (OFF-LINE)' : 'YOUR MIC: LIVE ON LINE'}
+                      {isMicMuted ? 'YOUR MIC: MUTED (OFF-LINE)' : 'YOUR MIC: LIVE (AUTO-SENDS ON PAUSE)'}
                     </span>
 
                     {/* Animated VU Meter Bars based on real input volume */}
@@ -452,9 +471,9 @@ export const PhoneDialer: React.FC<PhoneDialerProps> = ({
                       </div>
                     )}
 
-                    {interimText && (
+                    {liveTranscript && (
                       <span className="text-[11px] text-emerald-400 italic truncate max-w-xs">
-                        "{interimText}"
+                        "{liveTranscript}"
                       </span>
                     )}
                   </div>
@@ -672,9 +691,9 @@ export const PhoneDialer: React.FC<PhoneDialerProps> = ({
                 onChange={(e) => setInputText(e.target.value)}
                 placeholder={
                   isMicActive && !isMicMuted
-                    ? interimText
-                      ? `Listening: "${interimText}"...`
-                      : 'Speak into your microphone now...'
+                    ? liveTranscript
+                      ? `Heard: "${liveTranscript}" (auto-sending on pause)...`
+                      : 'Speak now into microphone (auto-types & auto-sends)...'
                     : currentCall
                     ? 'Type dialogue or command (/send_link, /connect, /hangup)...'
                     : 'Type /dial to autodial a random caller...'
