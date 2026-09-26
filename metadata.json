@@ -1,0 +1,6 @@
+{
+  "name": "Call Center Tycoon: Scam Operator",
+  "description": "A comedic text-based simulation video game and AI victim simulator inspired by Scam With Your Friends. Manage your virtual Windows desktop, run tech support, IRS, crypto, and refund scams, evade scambaiters, and build your illicit empire.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
